@@ -36,10 +36,10 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-[#A16541]/20 shadow-sm supports-[padding:max(0px)]:pt-[env(safe-area-inset-top)]">
-      {/* Top bar */}
+     
       <div className="w-full px-3 sm:px-6">
         <div className="h-14 sm:h-16 flex items-center gap-2">
-          {/* Mobile: Hamburger */}
+       
           <button
             className="inline-flex sm:hidden p-2 rounded-lg hover:bg-[#A16541]/10"
             onClick={() => setMobileOpen((s) => !s)}
@@ -74,7 +74,7 @@ export default function Navbar() {
             <GenresMenu />
           </nav>
 
-          {/* Spacer */}
+         
           <div className="flex-1" />
 
           {/* Desktop search */}
