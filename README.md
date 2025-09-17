@@ -13,3 +13,7 @@ API: OpenLibrary API
 3. npm install
 4. npm run dev
 
+**Usage:**
+Use the search bar to look for books by title, author, or subject.
+Apply filters to narrow down your search results.
+Click on a book to view its detailed overview and information.
