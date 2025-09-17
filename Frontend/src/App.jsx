@@ -6,7 +6,7 @@ import TrendingPage from "./Components/TrendingPage";
 export default function App() {
   return (
     <BrowserRouter>
-      <Navbar /> {/* single, global navbar */}
+      <Navbar /> 
       <div className="">
         <Routes>
           <Route path="/" element={<LandingPage />} />

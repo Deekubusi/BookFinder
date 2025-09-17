@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { ChevronDown, Users } from "lucide-react";
-import { GENRE_TAGS, TOP_AUTHORS } from "./constants"; // adjust path if needed
+import { GENRE_TAGS, TOP_AUTHORS } from "./constants";
 
 export default function GenresMenu() {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  // Split genres into columns of ~8 items each
+  
   const chunkSize = 8;
   const columns = [];
   for (let i = 0; i < GENRE_TAGS.length; i += chunkSize) {
@@ -56,7 +56,7 @@ export default function GenresMenu() {
           className="absolute left-0 mt-2 w-[760px] rounded-xl shadow-lg bg-white border border-[#A16541]/20 z-50"
         >
           <div className="grid grid-cols-3">
-            {/* Left: GENRES (2 columns) */}
+         
             <div className="col-span-2 p-4">
               <h4 className="text-xs font-semibold text-[#7A4C2E] mb-2 tracking-wide">
                 BROWSE GENRES
@@ -85,7 +85,7 @@ export default function GenresMenu() {
               </div>
             </div>
 
-            {/* Right: AUTHORS */}
+            {/* AUTHORS */}
             <div className="col-span-1 p-4 border-l border-[#E7D9CF] bg-[#FFFCFA] rounded-r-xl">
               <div className="flex items-center gap-2 mb-2">
                 <Users className="w-4 h-4 text-[#A16541]" />

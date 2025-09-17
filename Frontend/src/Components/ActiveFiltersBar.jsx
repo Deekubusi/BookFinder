@@ -1,5 +1,5 @@
 import React from "react";
-import { X } from "lucide-react";
+import { X } from "lucide-react"; //icon for remove purpose
 
 export default function ActiveFiltersBar({
   subject,
@@ -7,9 +7,8 @@ export default function ActiveFiltersBar({
   yearFrom,
   yearTo,
   language,
-  onClearKey,   // preferred: (key) => void
-  onClearAll,   // preferred: () => void
-  // optional legacy props (if you still pass them)
+  onClearKey,   
+  onClearAll,   
   onClearSubject,
   onClearAuthor,
   onClearYear,
@@ -22,11 +21,10 @@ export default function ActiveFiltersBar({
   if (yearTo) chips.push({ k: "yearTo", label: `To: ${yearTo}` });
   if (language) chips.push({ k: "language", label: `Lang: ${language.toUpperCase()}` });
 
-  if (!chips.length) return null;
+  if (!chips.length) return null; // not render when no active filters
 
   const handleClear = (k) => {
     if (onClearKey) return onClearKey(k);
-    // fallback to legacy props so it still works if you forget to update parent
     if (k === "subject") onClearSubject?.();
     else if (k === "author") onClearAuthor?.();
     else if (k === "yearFrom" || k === "yearTo") onClearYear?.();
@@ -41,6 +39,7 @@ export default function ActiveFiltersBar({
           className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm border border-[#A16541]/30 bg-[#FFF8F3] text-[#A16541] shadow-sm"
         >
           {label}
+          {/* to remove  filter */}
           <button
             type="button"
             onClick={() => handleClear(k)}
@@ -51,7 +50,7 @@ export default function ActiveFiltersBar({
           </button>
         </span>
       ))}
-
+{/* clear all  button*/}
       <button
         type="button"
         onClick={onClearAll}

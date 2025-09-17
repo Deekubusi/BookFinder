@@ -1,4 +1,4 @@
-// src/components/LandingPage/constants.js
+
 
 // Language options for dropdown
 export const LANGS = [
@@ -9,7 +9,7 @@ export const LANGS = [
   { code: "es", label: "Spanish" },
 ];
 
-// Mapping UI language codes to Open Library's language filters
+// my codes to Open Library's language filters
 export const OL_LANG = {
   en: "eng",
   hi: "hin",
@@ -18,7 +18,7 @@ export const OL_LANG = {
   es: "spa",
 };
 
-// Genre tags used in HeroSection & FiltersDrawer
+// Genre tags 
 export const GENRE_TAGS = [
   "Romance",
   "Fantasy",
@@ -31,7 +31,7 @@ export const GENRE_TAGS = [
   "Adventure",
   "Poetry",
 ];
-// constants.js (add this)
+// authors
 export const TOP_AUTHORS = [
   "J. K. Rowling",
   "Stephen King",
@@ -47,10 +47,10 @@ export const TOP_AUTHORS = [
   "Ruskin Bond",
 ];
 
-// Items per page for pagination
+// for pagination
 export const PAGE_SIZE = 20;
 
-// Helper to build cover URLs
+// to build cover URLs
 export const buildCoverUrl = (cover_i, size = "L") =>
   cover_i
     ? `https://covers.openlibrary.org/b/id/${cover_i}-${size}.jpg`

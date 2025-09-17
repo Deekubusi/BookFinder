@@ -6,8 +6,9 @@ export default function ResultsGrid({ items, loading, error, sort, setSort }) {
   return (
     <section id="discover" className="pb-16 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* for sort */}
         <div className="flex items-end justify-between mb-3">
-          {/* <h2 className="text-xl font-semibold">Results</h2> */}
           <div className="flex items-center gap-2 text-sm">
             <label className="text-neutral-600 dark:text-neutral-400 mt-2">Sort</label>
            <div className="relative">
@@ -21,7 +22,7 @@ export default function ResultsGrid({ items, loading, error, sort, setSort }) {
     <option value="newest">Newest</option>
   </select>
 
-  {/* Modern chevron-down icon */}
+  {/* down arrow icon */}
   <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[#A16541]">
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +47,7 @@ export default function ResultsGrid({ items, loading, error, sort, setSort }) {
             {error}
           </div>
         )}
-
+{/* results */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
           {loading && items.length === 0 &&
             new Array(10).fill(0).map((_, i) => (
@@ -66,7 +67,7 @@ export default function ResultsGrid({ items, loading, error, sort, setSort }) {
             <BookCard key={b.key} book={b} />
           ))}
         </div>
-
+{/* if no results */}
         {!loading && items.length === 0 && !error && (
           <div className="text-center py-16 text-neutral-500">
             No results yet — try a different search.

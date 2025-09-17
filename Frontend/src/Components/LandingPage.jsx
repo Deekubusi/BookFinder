@@ -7,7 +7,7 @@ import Pagination from "./Pagination";
 import { OL_LANG, PAGE_SIZE } from "./constants";
 
 export default function LandingPage() {
-  // ------- Search / Filters state -------
+  //for search 
   const [query, setQuery] = useState("");
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [author, setAuthor] = useState("");
@@ -17,7 +17,7 @@ export default function LandingPage() {
   const [language, setLanguage] = useState("en");
   const [sort, setSort] = useState("relevance");
 
-  // ------- Results / Pagination state -------
+  // for results
   const [page, setPage] = useState(1);
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -25,7 +25,7 @@ export default function LandingPage() {
   const [totalPages, setTotalPages] = useState(1);
   const [hasSearched, setHasSearched] = useState(false);
 
-  // ------- "Most Read" (initial) state -------
+  // for most read books
   const [mostItems, setMostItems] = useState([]);
   const [mostLoading, setMostLoading] = useState(true);
   const [mostError, setMostError] = useState("");
@@ -37,14 +37,14 @@ export default function LandingPage() {
     [query, author, subject, yearFrom, yearTo, language, sort]
   );
 
-  // Load "Most Read" once (initial page)
+  
   useEffect(() => {
     const ac = new AbortController();
     const loadMostRead = async () => {
       setMostLoading(true);
       setMostError("");
       try {
-        // Heuristic for “most read/popular”: broad term + sort by editions (desc)
+        // API
         const url = "https://openlibrary.org/search.json?q=the&sort=editions&limit=40";
         const res = await fetch(url, { signal: ac.signal });
         if (!res.ok) throw new Error(`OpenLibrary error ${res.status}`);
@@ -70,7 +70,7 @@ export default function LandingPage() {
     return () => ac.abort();
   }, []);
 
-  // Reset page when filters change
+  // Reseting page when filters change
   useEffect(() => {
     if (lastQueryKey.current !== queryKey) {
       setItems([]);
@@ -79,13 +79,13 @@ export default function LandingPage() {
     lastQueryKey.current = queryKey;
   }, [queryKey]);
 
-  // Fetch after search initiated
+  // Fetching after searched
   useEffect(() => {
     if (!hasSearched) return;
-    fetchPage(page); // eslint-disable-line
+    fetchPage(page); 
   }, [page, queryKey, hasSearched]);
 
-  // Optional: events from Navbar/Hero
+
   useEffect(() => {
     const onSub = (e) => { setSubject(e.detail); setHasSearched(true); setPage(1); };
     const onAuth = (e) => { setAuthor(e.detail); setHasSearched(true); setPage(1); };
@@ -104,7 +104,7 @@ export default function LandingPage() {
     };
   }, []);
 
-  // --------- Search fetch ----------
+  // Search fetch
   async function fetchPage(pageNum) {
     setLoading(true);
     setError("");
@@ -179,7 +179,7 @@ export default function LandingPage() {
     setHasSearched(true);
   }
 
-  // Chip handlers
+  
   const handleClearKey = (k) => {
     if (k === "subject") setSubject("");
     else if (k === "author") setAuthor("");
@@ -195,11 +195,10 @@ export default function LandingPage() {
     setYearFrom("");
     setYearTo("");
     setLanguage("");
-    // setQuery(""); // if you want chips to also clear title
     if (hasSearched) startSearch();
   };
 
-  // --------- Pick which dataset to show ---------
+// for most read books
   const effectiveItems   = hasSearched ? items       : mostItems;
   const effectiveLoading = hasSearched ? loading     : mostLoading;
   const effectiveError   = hasSearched ? error       : mostError;
@@ -225,7 +224,7 @@ export default function LandingPage() {
 
         <h2 className="text-2xl font-bold text-[#A16541] mb-4">{headingText}</h2>
 
-        {/* Use the same grid component & loader/error behavior for both modes */}
+       
         <ResultsGrid
           items={effectiveItems}
           loading={effectiveLoading}

@@ -19,7 +19,7 @@ export default function FiltersDrawer({
 }) {
   if (!open) return null;
 
-  // Optional: prevent body scroll while drawer is open
+  
   useEffect(() => {
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -41,7 +41,7 @@ export default function FiltersDrawer({
         aria-label="Close filters"
       />
 
-      {/* --- Mobile: bottom sheet --- */}
+      {/* mobile */}
       <div
         className="
           absolute bottom-0 left-0 right-0
@@ -54,7 +54,7 @@ export default function FiltersDrawer({
         role="dialog"
         aria-modal="true"
       >
-        {/* Grab handle + Header */}
+        {/* Header */}
         <div className="flex items-center justify-between mb-3">
           <div className="mx-auto h-1.5 w-12 rounded-full bg-[#A16541]/20" />
         </div>
@@ -72,7 +72,7 @@ export default function FiltersDrawer({
           </button>
         </div>
 
-        {/* Content (mobile) */}
+        {/* Content mobile */}
         <div className="max-h-[70vh] overflow-y-auto pb-2">
           <Fields
             author={author}
@@ -89,7 +89,7 @@ export default function FiltersDrawer({
           />
         </div>
 
-        {/* CTA row (mobile) */}
+        
         <div className="mt-3 flex gap-3">
           <button
             type="button"
@@ -108,7 +108,7 @@ export default function FiltersDrawer({
         </div>
       </div>
 
-      {/* --- Desktop/Tablet: right drawer --- */}
+      {/*Desktop/Tablet */}
       <div
         className="
           absolute right-0 top-0 h-full w-full sm:w-[420px]
@@ -150,7 +150,7 @@ export default function FiltersDrawer({
           />
         </div>
 
-        {/* Apply Button */}
+        {/* Apply button */}
         <div className="pt-3">
           <button
             type="button"
@@ -162,7 +162,7 @@ export default function FiltersDrawer({
         </div>
       </div>
 
-      {/* Animations */}
+      {/* animations */}
       <style>{`
         @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
         @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
@@ -171,7 +171,7 @@ export default function FiltersDrawer({
   );
 }
 
-/** Extracted fields so we can reuse between mobile and desktop */
+/** fields so we can reuse between mobile and desktop */
 function Fields({
   author,
   setAuthor,
@@ -210,7 +210,7 @@ function Fields({
           inputMode="text"
         />
 
-        {/* Chips: wrap nicely on desktop; horizontal scroll on mobile for easier tapping */}
+        
         <div
           className={
             mobile

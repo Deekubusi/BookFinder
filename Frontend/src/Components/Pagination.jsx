@@ -2,9 +2,8 @@ import React from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function Pagination({ currentPage, totalPages, onPageChange }) {
-  if (totalPages <= 1) return null; // hide if only one page
+  if (totalPages <= 1) return null; 
 
-  // Generate a short window of pages (e.g. 1 ... 3 4 5 ... 20)
   const pages = [];
   const maxVisible = 5;
   let start = Math.max(1, currentPage - Math.floor(maxVisible / 2));
@@ -18,7 +17,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="flex justify-center mt-6 gap-2">
-        {/* Prev Button */}
+        {/* previous Button */}
         <button
           onClick={() => onPageChange(currentPage - 1)}
           disabled={currentPage === 1}
@@ -27,7 +26,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
           <ChevronLeft className="w-4 h-4" />
         </button>
 
-        {/* Page Numbers */}
+        {/* page numbers */}
         {pages.map((p) => (
           <button
             key={p}
@@ -42,7 +41,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
           </button>
         ))}
 
-        {/* Next Button */}
+        {/* // next button */}
         <button
           onClick={() => onPageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
