@@ -11,7 +11,9 @@ API: OpenLibrary API
 1. Clone the repository: git clone https://github.com/Deekubusi/BookFinder.git
 2. cd Frontend
 3. npm install
-4. npm run dev
+4. npm install lucide-react
+5.npm install react react-dom
+6. npm run dev
 
 **Usage:**
 Use the search bar to look for books by title, author, or subject.
